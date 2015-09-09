@@ -1,0 +1,107 @@
+<template name="Home">
+<div class="page-container container" id="content">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="page-header">
+				<div class="jumbotron">
+				  <h1>Lion Noms</h1>
+				  <p>Simple meal sharing in Columbia.</p>
+				  <p><b>Have additional meal swipes?</b> Contribute noms and the noms will be listed here.</p>
+				  <p><b>Need noms?</b> Claim a nom, and we'll send an email to link you up with the nom contributor.</p>
+  			</div>
+			</div>
+		</div>
+	</div>
+	{{> HomeNomsView}}
+</div>
+</template>
+
+<template name="HomeNomsView">
+<div id="data_view" class="">
+	<h2 id="component-title">
+	All Them Noms
+	</h2>
+	<form id="dataview-controls" class="form-inline">
+		<div id="dataview-controls-search">
+			{{#if isNotEmpty}}
+			<div id="dataview-controls-search-group" class="form-group">
+				<label class="sr-only" for="search">
+					Search
+				</label>
+				<input type="text" class="form-control" id="dataview-search-input" placeholder="Search" name="search" value="{{searchString}}" autofocus="autofocus">
+				<button type="button" id="dataview-search-button" class="btn btn-primary">
+				<span class="fa fa-search">
+				</span>
+				</button>
+			</div>
+			{{/if}}
+		</div>
+	</form>
+	{{#if isNotEmpty}}
+	{{#if isNotFound}}
+	<div class="alert alert-warning">
+		"{{searchString}}" not found.
+	</div>
+	{{else}}
+	<div id="dataview-data">
+		{{#if viewAsTable}} {{> HomeNomsViewTable}} {{/if}}
+	</div>
+	{{/if}}
+	{{else}}
+	<div class="alert alert-info">
+		No noms available :(
+	</div>
+	{{/if}}
+</div>
+</template>
+<template name="HomeNomsViewTable">
+<table id="dataview-table" class="table table-striped table-hover">
+	<thead id="dataview-table-header">
+		<tr id="dataview-table-header-row">
+			<th class="th-sortable" data-sort="time">
+				Meeting Time
+			</th>
+			<th class="th-sortable" data-sort="name">
+				Name
+			</th>
+			<th class="th-sortable" data-sort="phone">
+				Phone
+			</th>
+			<th class="th-sortable" data-sort="email">
+				E-mail
+			</th>
+			<th class="th-sortable" data-sort="locationdining">
+				Dining Location
+			</th>
+			<th class="th-sortable" data-sort="locationmeeting">
+				Meeting Location
+			</th>
+		</tr>
+	</thead>
+	<tbody id="dataview-table-items">
+		{{#each tableItems}} {{> HomeNomsViewTableItems}} {{/each}}
+	</tbody>
+</table>
+</template>
+<template name="HomeNomsViewTableItems">
+<tr id="dataview-table-items-row">
+	<td>
+		{{formatDate time}}
+	</td>
+	<td>
+		{{name}}
+	</td>
+	<td>
+		{{phone}}
+	</td>
+	<td>
+		{{email}}
+	</td>
+	<td>
+		{{locationdining}}
+	</td>
+	<td>
+		{{locationmeeting}}
+	</td>
+</tr>
+</template>

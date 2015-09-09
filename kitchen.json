@@ -1,0 +1,144 @@
+{
+  "application": {
+    "title": "Lion Noms",
+    "frontend": "bootstrap3",
+    "theme": "bootswatch-simplex",
+    "use_collection2": false,
+    "collections": [{
+      "name": "noms",
+      "fields": [{
+        "name": "name",
+        "title": "Name",
+        "required": true,
+        "show_in_update_form": false
+      }, {
+        "name": "phone",
+        "title": "Phone",
+        "required": true,
+        "show_in_update_form": false
+      }, {
+        "name": "email",
+        "title": "E-mail",
+        "type": "email",
+        "required": true,
+        "show_in_update_form": false
+      }, {
+        "name": "locationdining",
+        "title": "Dining Location",
+        "required": true,
+        "show_in_update_form": false
+      }, {
+        "name": "locationmeeting",
+        "title": "Meeting Location",
+        "show_in_update_form": false
+      }, {
+        "name": "time",
+        "title": "Meeting Time",
+        "required": true,
+        "type": "datetime",
+        "show_in_update_form": false
+      }, {
+        "name": "createdAt",
+        "title": "Created At",
+        "required": true,
+        "show_in_insert_form": false,
+        "show_in_update_form": false,
+        "show_in_dataview": false
+      }, {
+        "name": "nommername",
+        "title": "Nommer Name",
+        "show_in_insert_form": false,
+        "show_in_update_form": true,
+        "show_in_dataview": false
+      }, {
+        "name": "nommeremail",
+        "title": "Nommer Email",
+        "type": "email",
+        "show_in_insert_form": false,
+        "show_in_update_form": true,
+        "show_in_dataview": false
+      }, {
+        "name": "nommerphone",
+        "title": "Nommer Phone",
+        "show_in_insert_form": false,
+        "show_in_update_form": true,
+        "show_in_dataview": false
+      }]
+    }],
+    "queries": [{
+      "name": "noms",
+      "collection": "noms",
+      "filter": {},
+      "options": {}
+    }, {
+      "name": "nom",
+      "collection": "noms",
+      "filter": {
+        "_id": ":nomId"
+      },
+      "find_one": true
+    }],
+    "free_zone": {
+      "pages": [{
+        "name": "home",
+        "title": "Home",
+        "query_name": "noms",
+        "components": [{
+          "name": "noms_view",
+          "type": "data_view",
+          "title": "Noms Available",
+          "text_if_empty": "No noms available :(",
+          "query_name": "noms",
+          "details_route": "nom",
+          "details_route_params": [{
+            "name": "nomId",
+            "value": "this._id"
+          }]
+        }]
+      }, {
+        "name": "addnom",
+        "title": "Add Nom",
+        "query_name": "noms",
+        "components": [{
+          "name": "submit_nom_form",
+          "type": "form",
+          "mode": "insert",
+          "title": "Create nom",
+          "query_name": "noms",
+          "submit_route": "home",
+          "cancel_route": "home"
+        }]
+      }, {
+        "name": "nom",
+        "title": "Nom",
+        "route_params": ["nomId"],
+        "components": [{
+          "name": "claim_nom_form",
+          "type": "form",
+          "mode": "update",
+          "title": "Claim nom",
+          "query_name": "nom",
+          "submit_route": "home",
+          "cancel_route": "home"
+        }]
+      }, {
+        "name": "about",
+        "title": "About"
+      }],
+      "components": [{
+        "name": "main_menu",
+        "type": "menu",
+        "items": [{
+          "title": "Home",
+          "route": "home"
+        }, {
+          "title": "Add Nom",
+          "route": "addnom"
+        }, {
+          "title": "About",
+          "route": "about"
+        }]
+      }]
+    }
+  }
+}
