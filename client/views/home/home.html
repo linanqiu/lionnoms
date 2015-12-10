@@ -1,17 +1,5 @@
 <template name="Home">
 <div class="page-container container" id="content">
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="page-header">
-				<div class="jumbotron">
-				  <h1>Lion Noms</h1>
-				  <p>Simple meal sharing in Columbia.</p>
-				  <p><b>Have additional meal swipes?</b> Contribute noms and the noms will be listed here.</p>
-				  <p><b>Need noms?</b> Claim a nom, and we'll send an email to link you up with the nom contributor.</p>
-  			</div>
-			</div>
-		</div>
-	</div>
 	{{> HomeNomsView}}
 </div>
 </template>
@@ -64,17 +52,8 @@
 			<th class="th-sortable" data-sort="name">
 				Name
 			</th>
-			<th class="th-sortable" data-sort="phone">
-				Phone
-			</th>
-			<th class="th-sortable" data-sort="email">
-				E-mail
-			</th>
 			<th class="th-sortable" data-sort="locationdining">
 				Dining Location
-			</th>
-			<th class="th-sortable" data-sort="locationmeeting">
-				Meeting Location
 			</th>
 		</tr>
 	</thead>
@@ -92,16 +71,7 @@
 		{{name}}
 	</td>
 	<td>
-		{{phone}}
-	</td>
-	<td>
-		{{email}}
-	</td>
-	<td>
 		{{locationdining}}
-	</td>
-	<td>
-		{{locationmeeting}}
 	</td>
 </tr>
 </template>
